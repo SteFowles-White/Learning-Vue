@@ -1,4 +1,4 @@
-const media = [
+Vconst media = [
     {
       title: 'Hop on Pop', 
       description: "A delightful children's book.",
@@ -47,6 +47,20 @@ const media = [
       type: 'streaming video',
       contributor: '',
       showDetail: false,
+    },
+    {
+      title: 'The Sirens of Titan', 
+      description: "Mankind flung its advance agents ever outward, ever outward... it flung them like stones.",
+      type: 'e-book',
+      contributor: 'Kurt Vonnegut',
+      showDetail: false,
+    },
+    {
+      title: 'Better Call Saul', 
+      description: "A slow-burning Breaking Bad prequel.",
+      type: 'e-book',
+      contributor: '',
+      showDetail: false,
     }
   ]
 
@@ -60,10 +74,26 @@ const app = new Vue({
     methods: {
        toggleDetails: function(media){
           media.showDetail = !media.showDetail;
+          //This take the value of showDetails and changes the boolean
       },
+
+      //This assigns the value in the select menu (HTML) to the vale type which is currently ""
       filterList: function(){
         this.type = event.target.value;
       }
+    },
+    computed: {
+      uniqueItemsList: function (){
+        const types = [];
+        this.mediaList.forEach((item) => {
+          if(!types.includes(item.type))
+          {
+            types.push(item.type);
+          }
+        });
+        return types;
+      }
+
     }
     
   });
