@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <div id='app'>
+            
+            <h1 v-once> {{ title }}</h1>
+            <p>
+            {{ sayHello() }} - <a v-bind:href="link">Google</a>
+            </p>
+            <hr>
+            <p v-html='finishedLink'></p>
+        </div>
+
+<div id="exercise">
+   <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+    <p v-once>VueJS is pretty cool - {{ name }} {{ age }}</p>
+    <!-- 2) Output your age, multiplied by 3 -->
+    <p> {{ ageTimeThree }}</p>
+    <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+    <p> {{ randomNumber() }} </p>
+    <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+    <div>
+        <img v-bind:src='image' style="width:100px;height:100px">
+    </div>
+    <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+    <div>
+        <input type="text" v-bind:value='name'>
+    </div>
+</div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script>
+        
+        new Vue ({
+    el: '#exercise',
+    data: {
+        name: 'Stephen Fowles-White ',
+        age: "31",
+        image: 'https://wegotthiscovered.com/wp-content/uploads/2019/05/Robert-Pattinson-as-Batman.png'
+
+    },
+
+    computed: {
+        ageTimeThree: function() {
+            return this.age = this.age * 3
+
+        }
+    },
+
+    methods: {
+        randomNumber: function() {
+            return Math.random();
+        }
+    }
+})
+new Vue({
+	el: '#app',
+	data: {
+      title:'Hello World',
+      link: 'https://www.google.com',
+      finishedLink: '<a href="https://www.google.com">Google</a>'
+  },
+  methods: {
+      sayHello: function() {
+          this.title = 'Hello'
+          return this.title;
+      }
+  }
+});
+</script>
+    </body>
+
+</html>
