@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <div id='counter'>
+            <!-- // add more than one paremteter to the function  -->
+            <button v-on:click='increase(1, $event)'>Click Me</button>
+            <button v-on:click='counter++'>Click Me</button>
+            <p>{{ counter * 2 > 10 ? 'Greater Than 10' : 'Smaller than 10' }}</p>
+            <p v-on:mousemove='updateCoordinates'> Coordinates: {{ x }} / {{ y }}
+                - <span v-on:mousemove.stop="">DEAD SPOT</span>
+            </p>
+            <input type='text' v-on:keyup.enter='alertMe'>
+        </div>
+
+
+        <h1> Task 2</h1>
+        <div id="exercise">
+            <!-- 1) Show an alert when the Button gets clicked -->
+            <div>
+                <button v-on:click='alert'>Show Alert</button>
+            </div>
+            <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
+            <div>
+                <input v-on:keydown='storeData'type="text">
+                <p>{{ value }}</p>
+            </div>
+            <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+            <div>
+                <input v-on:keydown.enter='storeData'type="text">
+                <p>{{ value }}</p>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script src="main.js"></script>
+        <script src="Excercise.js"></script>
+        <script>
+            new Vue({
+                    el: '#counter',
+                    data: {
+                    counter: 0,
+                    x: 0,
+                    y: 0
+                },
+                methods: {
+                    increase: function(num, event) {
+                        return this.counter += num;
+                    },
+                    updateCoordinates: function(e) {
+                        this.x = e.clientX;
+                        this.y = e.clientY;
+
+                    },
+                    alertMe: function() {
+                    alert("alert");
+                    }
+
+                },
+                });
+
+                new Vue ({
+                        el: '#exercise',
+                        data: {
+                            name: 'Stephen Fowles-White ',
+                            age: "31",
+                            image: 'https://wegotthiscovered.com/wp-content/uploads/2019/05/Robert-Pattinson-as-Batman.png',
+                            value: ''
+
+                        },
+
+
+                        methods: {
+
+                            alert: function() {
+                                alert('Button Pressed')
+                            },
+                            storeData: function(e) {
+                                return this.value = e.target.value;
+                            }
+                        }
+
+                    })
+        
+        </script>
+    </body>
+
+</html>
