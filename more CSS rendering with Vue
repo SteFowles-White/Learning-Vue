@@ -12,6 +12,10 @@
       <button @click="startEffect">Start Effect</button>
       <div id="effect" :class='{ highlight: change, shrink: !change }'></div>
     </div>
+   <div>
+      <button @click="startEffect">Start Effect</button>
+      <div id="effect" :class='{ highlight: change, shrink: !change }'></div>
+    </div>
 
     <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
     <div :class='[divWidth, divHeight, divBackground]'>I got no class :(</div>
